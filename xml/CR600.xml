@@ -305,24 +305,39 @@
         </material>
     </baseMaterial>
 	
-	<baseMaterialConfigurations price="0" useDefaultColors="true" defaultColorIndex="8">
+	<baseMaterialConfigurations price="0" useDefaultColors="true" defaultColorIndex="0">
+        <material name="CR600_mat" 			shaderParameter="colorMat0" />
+        <material name="beltHolder_mat" 	shaderParameter="colorMat1" />
+		
+		<baseMaterialConfiguration name="DennisK Dark Blue" 	color="0.005 0.001 0.533"/>
+		<baseMaterialConfiguration name="DennisK Light Blue" 	color="0.000 0.776 1.000"/>
+		<baseMaterialConfiguration name="DennisK Black" 		color="0 0 0"/>
+		<baseMaterialConfiguration name="Black Matt" 			color="0.015 0.015 0.015" material="23"/>
         <baseMaterialConfiguration name="$l10n_ui_colorGrey" material="0" color="0.153 0.238 0.332" />
         <baseMaterialConfiguration name="$l10n_ui_colorGreyDark" material="0" color="0.098 0.1 0.105" />
         <baseMaterialConfiguration name="$l10n_ui_colorRed" material="0" color="0.413 0.028 0.027" />
         <baseMaterialConfiguration name="$l10n_ui_colorOrange" material="0" color="0.973 0.418 0.012" />
-        <material name="CR600_mat" shaderParameter="colorMat0" />
-        <material name="beltHolder_mat" shaderParameter="colorMat1" />
     </baseMaterialConfigurations>
 	
-	<designMaterialConfigurations price="200" useDefaultColors="true" defaultColorIndex="22">
-        <designMaterialConfiguration color="SHARED_DA_METAL_BLACK" material="0"/>
-        <material name="CR600_mat" shaderParameter="colorMat1" />
-        <material name="beltHolder_mat" shaderParameter="colorMat0" />
+	<designMaterialConfigurations price="200" useDefaultColors="true" defaultColorIndex="0">
+        <material name="CR600_mat" 			shaderParameter="colorMat1" />
+        <material name="beltHolder_mat"		shaderParameter="colorMat0" />
+		
+		<designMaterialConfiguration name="Black Matt" 			color="0.015 0.015 0.015" material="23"/>
+		<designMaterialConfiguration name="DennisK Dark Blue" 	color="0.005 0.001 0.533"/>
+		<designMaterialConfiguration name="DennisK Light Blue" 	color="0.000 0.776 1.000"/>
+		<designMaterialConfiguration name="DennisK Black" 		color="0 0 0"/>
+        <designMaterialConfiguration name="Metal black" color="SHARED_DA_METAL_BLACK" material="0"/>
     </designMaterialConfigurations>
 	
 	<designMaterial2Configurations title="$l10n_typeDesc_belt" price="100" useDefaultColors="true">
+        <material name="belt_mat" 			shaderParameter="colorMat0" />
+		
+		<designMaterial2Configuration name="DennisK Light Blue" 	color="0.000 0.776 1.000"/>
+		<designMaterial2Configuration name="Black Matt" 			color="0.015 0.015 0.015" material="23"/>
+		<designMaterial2Configuration name="DennisK Dark Blue" 	color="0.005 0.001 0.533"/>
+		<designMaterial2Configuration name="DennisK Black" 		color="0 0 0"/>
         <designMaterial2Configuration name="$l10n_ui_colorBlue" color="0 0.2 0.5" material="5"/>
-        <material name="belt_mat" shaderParameter="colorMat0" />
     </designMaterial2Configurations>
 	
 	<vehicleTypeConfigurations title="$l10n_configuration_trailer">
