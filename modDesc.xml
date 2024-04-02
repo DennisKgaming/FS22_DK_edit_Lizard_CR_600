@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<modDesc descVersion="66">
+    <author>HoFFi</author>
+    <version>1.0.0.1</version>
+    <title>
+        <en>CR 600 DK edit</en>
+    </title>
+    <description>
+        <en><![CDATA[This electric jaw crusher is ideal to process small to medium rocks.
+The lime obtained from it can be used for agricultural purposes .
+
+Due to the adjustable mill, sugar beets, bales and wood can also be cut into pieces, for example. 
+
+Ratio 1:1
+Stone -> Lime
+Sugar beet -> Sugar beet cut
+Straw bale -> Straw
+Wood -> woodchips
+
+Price: 20000 €
+Capacity: 1m³
+Category: others
+
+Changelog:
+V1.0.0.1
+- fixed warning for AI area (related to patch 1.4.1.0)]]></en>
+        <de><![CDATA[Der elektrische Backenbrecher ist ideal für die Aufbereitung von kleinem bis mittelgroßem Gestein.
+Der daraus gewonnene Kalk, kann für den landwirtschaftlichen Gebrauch genutzt werden.
+
+Durch die justierbaren Walzen, können beispielsweise auch Zuckerrüben, Ballen oder Holz zerkleinert werden.
+
+Verhältnis 1:1
+Stein -> Kalk
+Zuckerrüben -> Zuckerrübenschnitzel
+Strohballen -> Stroh
+Holz -> Hackschnitzel
+
+Preis: 20000 €
+Kapatität: 1m³
+Kategorie: sonstige
+
+Changelog:
+V1.0.0.1
+- warning zwecks AI area behoben (in Zusammenhang mit Patch 1.4.1.0)]]></de>
+    </description>
+    <iconFilename>icons/icon.dds</iconFilename>
+    <multiplayer supported="true"/>
+
+    <storeItems>
+        <storeItem xmlFilename="xml/CR600.xml"/>
+        <storeItem xmlFilename="pallets/limePallet/fillablePallet.xml"/>
+    </storeItems>
+	
+	<vehicleTypes>
+		<type name="CR600tipper" className="Vehicle" filename="$dataS/scripts/vehicles/Vehicle.lua"  parent="baseFillable">
+			<specialization name="enterable" />
+			<specialization name="motorized" />
+			<specialization name="drivable" />
+			<specialization name="dischargeable" />
+			<specialization name="trailer" />
+			<specialization name="turnOnVehicle" />
+			<specialization name="woodCrusher" />
+			<specialization name="strawBlower" />
+		</type>
+		<type name="CR600pallet" className="Vehicle" filename="$dataS/scripts/vehicles/Vehicle.lua"  parent="baseFillable">
+			<specialization name="enterable" />
+			<specialization name="motorized" />
+			<specialization name="drivable" />
+			<specialization name="dischargeable" />
+			<specialization name="trailer" />
+			<specialization name="turnOnVehicle" />
+			<specialization name="woodCrusher" />
+			<specialization name="strawBlower" />
+			<specialization name="receivingHopper" />
+		</type>
+	</vehicleTypes>
+	
+	<fillTypes filename="xml/fillTypes.xml" />
+
+	<l10n>
+		<text name="function_CR">
+			<en>Jaw breaker are used to shred various kinds of material. Herewith, stone can be processed to lime.</en>
+			<de>Backenbrecher werden zum Zerkleinern von verschiedenstem Material genutzt. Hiermit kann nicht ganz realitätsgetreu, Stein zu Kalk verarbeitet werden.</de>
+		</text>
+		<text name="configuration_Box">
+			<en>Box creation</en>
+			<de>Kistenerstellung</de>
+		</text>
+		<text name="configuration_Belt">
+			<en>Belt</en>
+			<de>Förderband</de>
+		</text>
+		<text name="configuration_BoxBelt">
+			<en>Box creation + belt</en>
+			<de>Kistenerstellung + Band</de>
+		</text>
+	</l10n>	
+	
+	<extraSourceFiles>
+        <sourceFile filename="scripts/categorizer.lua"/>
+    </extraSourceFiles>
+	
+	<newcategory name="DennisKtools" title="DennisK" type="TOOL" img="Categories/CategoryTools.png" />
+	
+</modDesc>

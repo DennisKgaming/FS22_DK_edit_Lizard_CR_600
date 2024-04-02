@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<vehicle type="CR600tipper">
+    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
+	
+	<storeData>
+        <name>CR 600</name>
+        <functions>
+            <function>$l10n_function_CR</function>
+        </functions>
+        <image>icons/store.dds</image>
+        <price>20000</price>
+        <lifetime>600</lifetime>
+        <rotation>0</rotation>
+        <brand>LIZARD</brand>
+        <category>DennisKtools</category>
+		<shopTranslationOffset>0 1 0</shopTranslationOffset>
+        <vertexBufferMemoryUsage>2683392</vertexBufferMemoryUsage>
+        <indexBufferMemoryUsage>386816</indexBufferMemoryUsage>
+        <textureMemoryUsage>3211264</textureMemoryUsage>
+        <audioMemoryUsage>423969</audioMemoryUsage>
+        <instanceVertexBufferMemoryUsage>0</instanceVertexBufferMemoryUsage>
+        <instanceIndexBufferMemoryUsage>0</instanceIndexBufferMemoryUsage>
+    </storeData>
+	
+	<base>
+		<typeDesc>CR 600</typeDesc>
+		<filename>i3d/CR600.i3d</filename>
+		<size width="3.5" length="5"/>
+        <sounds filename="$data/vehicles/schaeffer/loader2630/sounds/loader2630.xml"/>
+        <components>
+			<component centerOfMass="0 0 0" solverIterationCount="10" mass="1280"/>
+			<component solverIterationCount="10" mass="100"/>
+			<joint component1="1" component2="2" node="compJoint" rotLimit="30 0 0" transLimit="0 0 0" />
+		</components>
+        <schemaOverlay attacherJointPosition="0 0" name="IMPLEMENT" />        
+		<mapHotspot type="IMPLEMENT" />
+    </base>
+	
+	<wheels>
+        <wheelConfigurations>
+            <wheelConfiguration name="$l10n_configuration_valueDefault" price="0" brand="TRELLEBORG" saveId="TRELLEBORG_DEFAULT">
+                <wheels> 
+                    <wheel>
+                        <physics tipOcclusionAreaGroupId="2" restLoad="0.4" repr="fakeWheel1" radius="0.1" width="0.1" forcePointRatio="0.2" initialCompression="32" suspTravel="0.01" spring="20" damper="20"/>
+                    </wheel>
+					
+                    <wheel>
+                        <physics tipOcclusionAreaGroupId="2" restLoad="0.4" repr="fakeWheel2" radius="0.1" width="0.1" forcePointRatio="0.2" initialCompression="32" suspTravel="0.01" spring="20" damper="20"/>
+                    </wheel>
+                </wheels>
+            </wheelConfiguration>
+        </wheelConfigurations>
+		
+		<ackermannSteeringConfigurations>
+            <ackermannSteering rotSpeed="65" rotMax="80" rotCenterWheel1="1" rotCenterWheel2="2" />
+        </ackermannSteeringConfigurations>
+    </wheels>
+	
+	<motorized>		
+		<consumerConfigurations>
+            <consumerConfiguration consumersEmptyWarning="$l10n_warning_motorBatteryEmpty">
+                <consumer fillUnitIndex="2" usage="1" fillType="electricCharge" />
+            </consumerConfiguration>
+        </consumerConfigurations>
+		
+		<differentialConfigurations>
+            <differentialConfiguration>
+                <differentials>
+                    <differential torqueRatio="0.5" maxSpeedRatio="3.0" wheelIndex1="1" wheelIndex2="2" />
+                </differentials>
+            </differentialConfiguration>
+        </differentialConfigurations>
+
+        <motorConfigurations>
+            <motorConfiguration name="TC 816" hp="5" price="0">
+                <motor torqueScale="0.2" minRpm="850" maxRpm="2200" maxForwardSpeed="5" maxBackwardSpeed="5" brakeForce="0.1" lowBrakeForceScale="0.1" accelerationLimit="1">
+                    <torque normRpm="0.45" torque="0.9"/>
+                    <torque normRpm="0.5"  torque="0.97"/>
+                    <torque normRpm="0.59" torque="1"/>
+                    <torque normRpm="0.72" torque="1"/>
+                    <torque normRpm="0.86" torque="0.88"/>
+                    <torque normRpm="1"    torque="0.72"/>
+                </motor>
+                <transmission minForwardGearRatio="150" maxForwardGearRatio="310" minBackwardGearRatio="150" maxBackwardGearRatio="310" />
+            </motorConfiguration>
+        </motorConfigurations>
+    </motorized>
+	
+	<enterable isTabbable="true" >
+        <enterReferenceNode node="0>" />
+        <exitPoint node="exitPoint" />
+
+        <cameras>
+            <camera node="outdoorCamera1" rotatable="true" rotateNode="outdoorCameraTarget" limit="true" useWorldXZRotation="true" rotMinX="-1.4" rotMaxX="1" transMin="1" transMax="15" />
+        </cameras>
+    </enterable>
+	
+	<attachable>
+        <inputAttacherJoints>
+            <inputAttacherJoint node="flAttacher1" jointType="telehandler" rootNode="mainComponent1">
+				<objectChange node="lifter1_vis" visibilityActive="true" visibilityInactive="false"/>
+				<objectChange node="compJoint" translationActive="0 1.651 0.05" rotationActive="0 90 0"/>
+			</inputAttacherJoint>
+            <inputAttacherJoint node="flAttacher2" jointType="telehandler" rootNode="mainComponent1">
+				<objectChange node="lifter1_vis" visibilityActive="true" visibilityInactive="false"/>
+				<objectChange node="compJoint" translationActive="0 1.651 0.05" rotationActive="0 90 0"/>
+			</inputAttacherJoint>
+			<inputAttacherJoint node="0>8|2" jointType="trailer" />
+        </inputAttacherJoints>
+    </attachable>
+	
+	<fillVolume>
+        <fillVolumeConfigurations>
+			<fillVolumeConfiguration>
+                <volumes>
+                    <volume node="fillVolume" maxAllowedHeapAngle="3" fillUnitIndex="1" />
+                </volumes>
+            </fillVolumeConfiguration>
+        </fillVolumeConfigurations>
+
+        <unloadInfos>
+            <unloadInfo>
+                <node node="unloadInfo" width="3" length="3" />
+            </unloadInfo>
+        </unloadInfos>
+    </fillVolume>
+	
+	<fillUnit>
+        <fillUnitConfigurations>
+            <fillUnitConfiguration price="0">
+                <fillUnits>
+					<fillUnit shopDisplayUnit="CUBICMETER" fillTypes="STONE SUGARBEET woodChips straw grass silage grass_windrow dryGrass_windrow" capacity="1000" allowAILoading="true">
+                        <exactFillRootNode node="exactFillRootNode" />
+                        <autoAimTargetNode node="fillAutoAimTarget" startZ="0.639" endZ="0.639" invert="false" startPercentage="25"/>
+                    </fillUnit>
+					<fillUnit unitTextOverride="$l10n_unit_literShort" showOnHud="false" showInShop="false" fillTypes="ELECTRICCHARGE" capacity="450" canBeUnloaded="false"/>
+                </fillUnits>
+            </fillUnitConfiguration>
+        </fillUnitConfigurations>
+    </fillUnit>
+	
+	<strawBlower>
+        <baleTrigger node="baleTrigger" />
+        <sounds>
+            <start	template="STUMP_CUTTER_START"	linkNode="mainComponent0" />
+            <stop 	template="STUMP_CUTTER_STOP" 	linkNode="mainComponent0" />
+            <work 	template="STUMP_CUTTER_WORK" 	linkNode="mainComponent0" />
+        </sounds>
+    </strawBlower>
+	
+	<receivingHopper>
+        <boxes spawnPlaceNode="palletSpawn">
+			<box fillType="LIME" 			filename="pallets/limePallet/fillablePallet.xml" />
+            <box fillType="STONE" 			filename="$data/objects/pallets/fillablePallet/fillablePallet.xml" /> 
+            <box fillType="SUGARBEET" 		filename="$data/objects/pallets/fillablePallet/fillablePallet.xml" />
+            <box fillType="SUGARBEET_CUT"	filename="$data/objects/pallets/fillablePallet/fillablePallet.xml" /> 
+            <box fillType="WOOD" 			filename="$data/objects/pallets/fillablePallet/fillablePallet.xml" />
+            <box fillType="woodChips" 		filename="pallets/woodcutPallet/fillablePallet.xml" />
+        </boxes>
+    </receivingHopper>
+	
+	<dischargeable requiresTipOcclusionArea="false">
+        <dischargeNode node="dischargeNode" emptySpeed="30" fillUnitIndex="1" maxDistance="3" needsSetIsTurnedOn="true" needsIsEntered="false" canDischargeToGround="true" canDischargeToObject="true" canStartDischargeAutomatically="false" canStartGroundDischargeAutomatically="false">
+            <activationTrigger node="dischargeActivationTrigger" />
+            <info width="0.4" length="0.4" />
+			<fillType converterName="STONE_TO_LIME"/>		
+			<effects>
+                <effectNode effectClass="TipEffect">
+                    <effectNode effectNode="effectGrainDoor" materialType="unloading" fadeTime="0.5" uvSpeed="0.05" extraDistanceNode="extraDistanceNode1" extraDistance="0"/>
+                </effectNode>
+				<effectNode effectClass="TipEffect">
+                    <effectNode effectNode="pipeEffect" materialType="unloading" maxBending="1" delay="2.5" shapeScaleSpread="1 1 0 0" extraDistanceNode="extraDistanceNode2" extraDistance="0"/>
+                </effectNode>
+                <effectNode effectNode="effectSmokeDoor" materialType="smoke" materialTypeId="1" fadeTime="0.5" />
+				
+				
+				<effectNode effectClass="MorphPositionEffect" effectNode="mesh" materialType="belt" delay="0" fadeTime="3" speed="1" scrollLength="5" scrollSpeed="0.8"/>
+            </effects>
+			
+			<animationNodes>
+				<animationNode node="walze1_vis" rotSpeed="80"  rotAxis="1" turnOnFadeTime="1" turnOffFadeTime="2"/>
+				<animationNode node="walze2_vis" rotSpeed="-80"  rotAxis="1" turnOnFadeTime="1" turnOffFadeTime="2"/>
+				<animationNode node="walze3_vis" rotSpeed="80"  rotAxis="1" turnOnFadeTime="1" turnOffFadeTime="2"/>
+				<animationNode node="walze4_vis" rotSpeed="-80"  rotAxis="1" turnOnFadeTime="1" turnOffFadeTime="2"/>
+				<animationNode node="belt_vis" class="ScrollingAnimation" scrollSpeed="-0.6" scrollLength="5" shaderParameterName="offsetUV" shaderParameterComponent="2"/>
+			</animationNodes>
+			
+            <dischargeSound template="debrisCrusherWork"/>
+        </dischargeNode>
+    </dischargeable>
+	
+	<trailer>
+        <trailerConfigurations>
+            <trailerConfiguration name="$l10n_configuration_valueDefault" price="0">
+                <trailer>
+                    <tipSide name="bottom" dischargeNodeIndex="1">
+                        <animation name="tipAnimationBack" speedScale="1.0" startTipTime="0.2" />
+						<manualTipToggle enabled="true" stopOnDeactivate="false"/>
+                    </tipSide>
+                </trailer>
+            </trailerConfiguration>
+        </trailerConfigurations>
+    </trailer>
+	
+	<tensionBeltObject>																											
+        <meshNodes>
+            <meshNode node="body_vis"/>
+            <meshNode node="gestell_vis"/>
+            <meshNode node="trichter_vis"/>
+        </meshNodes>
+    </tensionBeltObject>
+	
+	<foldable>
+		<foldingConfigurations>
+			<foldingConfiguration>
+				<foldingParts startMoveDirection="0" requiresPower="false" allowDetachingWhileFolding="true" negDirectionText="$l10n_action_baleloaderTransportPosition" posDirectionText="$l10n_action_baleloaderOperatingPosition">
+					<foldingPart animationName="fold" speedScale="1"/>
+				</foldingParts>
+			</foldingConfiguration>
+		</foldingConfigurations>
+	</foldable>
+	
+	<animations>
+        <animation name="trap">
+            <part node="tarp" 	startTime="0" duration="0.00001" startScale="0 0 0" endScale="1 1 1"/>
+        </animation>
+		<animation name="fold">
+            <part node="gestell_vis" 	startTime="0" duration="0.00001" startRot="0 0 0" endRot="180 0 0"/>
+            <part node="col2" 			startTime="0" duration="0.8" startTrans="0 0 0" endTrans="0 1.583 0"/>
+            <part node="col3" 			startTime="0" duration="0.8" startTrans="0 0 0" endTrans="0 1.583 0"/>
+			
+            <part node="belt" 			startTime="0" duration="0.00001" startScale="1 1 1" endScale="0 0 0"/>
+			<part node="tarp"			startTime="0"    endTime="0.05" visibility="true" />
+            <part node="tarp"			startTime="0.05" endTime="0.1"  visibility="false" />
+        </animation>
+        <animation name="tipAnimationBack">
+            <part node="fakeAnim" startTime="0" duration="0.00001" startTrans="0 0 0" endTrans="0 0 0"/>
+        </animation>
+        <animation name="toggleTrigger">
+            <part node="marker" startTime="0" duration="0.00001" startScale="0 0 0" endScale="1 1 1"/>
+        </animation>
+    </animations>
+	
+	<cover>
+        <coverConfigurations>
+            <coverConfiguration name="$l10n_configuration_valueYes" openCoverWhileTipping="false" forceOpenOnTip="false" price="0">
+                <cover openAnimation="trap" forceOpenOnTip="false" autoReactToTrigger="false"/>
+            </coverConfiguration>
+        </coverConfigurations>
+    </cover>
+	
+	<turnOnVehicle isAlwaysTurnedOn="true" requiresTurnOn="false" turnedOnByAttacherVehicle="false" turnOffIfNotAllowed="false" turnOffOnDeactivate="false">
+		<activatableFillUnits>
+			<activatableFillUnit index="1"/>
+		</activatableFillUnits>
+        <!-- <sounds>
+            <work template="debrisCrusherWork" linkNode="0>"/>
+        </sounds> -->
+    </turnOnVehicle>
+	
+	<woodCrusher automaticallyTurnOn="false" cutNode="crusherCutNode" cutSizeY="1" cutSizeZ="1" moveColDisableCollisionPairs="false" shapeSizeDetectionNode="crusherShapeSizeDetectionNode" fillUnitIndex="1">
+        <moveTriggers>
+            <trigger node="moveTrigger" />
+        </moveTriggers>
+        <sounds>
+            <start template="WOOD_CHIPPER_START" linkNode="0>" />
+            <idle template="WOOD_CHIPPER_IDLE" linkNode="0>" />
+            <work template="WOOD_CHIPPER_WORK" linkNode="0>" />
+            <stop template="WOOD_CHIPPER_STOP" linkNode="0>" />
+        </sounds>
+    </woodCrusher>
+	
+	<configurationSets>
+        <configurationSet name="$l10n_configuration_valueDefault" isDefault="true">
+			<configuration name="vehicleType"   	index="1" />
+			<configuration name="designMaterial2"	index="1" />
+        </configurationSet>
+        <configurationSet name="$l10n_configuration_Box">
+			<configuration name="vehicleType"   	index="2" />
+			<configuration name="designMaterial2"	index="1" />
+        </configurationSet>
+        <configurationSet name="$l10n_configuration_Belt">
+			<configuration name="vehicleType"   	index="3" />
+        </configurationSet>
+        <configurationSet name="$l10n_configuration_BoxBelt">
+			<configuration name="vehicleType"   	index="4" />
+        </configurationSet>
+    </configurationSets>
+	
+	<foliageBending>
+        <bendingNode minX="-0.95" maxX="0.95" minZ="-1.8" maxZ="1.8" yOffset="0" node="mainComponent0" />
+    </foliageBending>
+	
+	<baseMaterial>
+        <material name="CR600_mat" baseNode="body_vis">
+            <shaderParameter name="colorMat0" value="0.8 0.3 0 0"/>
+            <shaderParameter name="colorMat1" value="0.02 0.02 0.02 0"/>
+        </material>
+        <material name="beltHolder_mat" baseNode="beltHolder_vis">
+            <shaderParameter name="colorMat0" value="0.02 0.02 0.02 0"/>
+            <shaderParameter name="colorMat1" value="0.6 0 0 0"/>
+        </material>
+        <material name="belt_mat" baseNode="belt_vis">
+            <shaderParameter name="colorMat0" value="0 0.2 0.5 5"/>
+        </material>
+    </baseMaterial>
+	
+	<baseMaterialConfigurations price="0" useDefaultColors="true" defaultColorIndex="8">
+        <baseMaterialConfiguration name="$l10n_ui_colorGrey" material="0" color="0.153 0.238 0.332" />
+        <baseMaterialConfiguration name="$l10n_ui_colorGreyDark" material="0" color="0.098 0.1 0.105" />
+        <baseMaterialConfiguration name="$l10n_ui_colorRed" material="0" color="0.413 0.028 0.027" />
+        <baseMaterialConfiguration name="$l10n_ui_colorOrange" material="0" color="0.973 0.418 0.012" />
+        <material name="CR600_mat" shaderParameter="colorMat0" />
+        <material name="beltHolder_mat" shaderParameter="colorMat1" />
+    </baseMaterialConfigurations>
+	
+	<designMaterialConfigurations price="200" useDefaultColors="true" defaultColorIndex="22">
+        <designMaterialConfiguration color="SHARED_DA_METAL_BLACK" material="0"/>
+        <material name="CR600_mat" shaderParameter="colorMat1" />
+        <material name="beltHolder_mat" shaderParameter="colorMat0" />
+    </designMaterialConfigurations>
+	
+	<designMaterial2Configurations title="$l10n_typeDesc_belt" price="100" useDefaultColors="true">
+        <designMaterial2Configuration name="$l10n_ui_colorBlue" color="0 0.2 0.5" material="5"/>
+        <material name="belt_mat" shaderParameter="colorMat0" />
+    </designMaterial2Configurations>
+	
+	<vehicleTypeConfigurations title="$l10n_configuration_trailer">
+        <vehicleTypeConfiguration name="$l10n_configuration_valueDefault" price="0" vehicleType="CR600tipper">
+				<objectChange node="belt" visibilityActive="false"/>
+				<objectChange node="colBelt" rigidBodyTypeActive="None" compoundChildActive="false"/>
+		</vehicleTypeConfiguration>
+		<vehicleTypeConfiguration name="$l10n_configuration_Box" price="0" vehicleType="CR600pallet">
+				<objectChange node="belt" visibilityActive="false"/>
+				<objectChange node="colBelt" rigidBodyTypeActive="None" compoundChildActive="false"/>
+		</vehicleTypeConfiguration>
+        <vehicleTypeConfiguration name="$l10n_configuration_Belt" price="0" vehicleType="CR600tipper">
+				<objectChange node="belt" visibilityActive="true"/>
+				<objectChange node="dischargeNode" translationActive="0 2.51 5"/>
+				<objectChange node="unloadInfo" translationActive="0 2.51 5"/>
+		</vehicleTypeConfiguration>
+        <vehicleTypeConfiguration name="$l10n_configuration_BoxBelt" price="0" vehicleType="CR600pallet">
+				<objectChange node="belt" visibilityActive="true"/>
+				<objectChange node="dischargeNode" translationActive="0 2.51 5"/>
+				<objectChange node="unloadInfo" translationActive="0 2.51 5"/>
+				<objectChange node="palletSpawn" translationActive="0 0.348 5"/>
+		</vehicleTypeConfiguration>
+	</vehicleTypeConfigurations>
+	
+	<ai>
+        <agentAttachment width="2.5" height="1.5" length="2" lengthOffset="0"/>
+        <needsLowering value="false"/>
+    </ai>
+	
+	<i3dMappings>
+	  <i3dMapping id="mainComponent0" 					node="0>" />
+	  <i3dMapping id="animations" 						node="0>0" />
+	  <i3dMapping id="walze1_vis" 						node="0>0|0" />
+	  <i3dMapping id="walze2_vis" 						node="0>0|1" />
+	  <i3dMapping id="walze3_vis" 						node="0>0|2" />
+	  <i3dMapping id="walze4_vis" 						node="0>0|3" />
+	  <i3dMapping id="collisions" 						node="0>1" />
+	  <i3dMapping id="col1" 							node="0>1|0" />
+	  <i3dMapping id="col2" 							node="0>1|1" />
+	  <i3dMapping id="col3" 							node="0>1|2" />
+	  <i3dMapping id="col4" 							node="0>1|3" />
+	  <i3dMapping id="tcol1" 							node="0>1|4" />
+	  <i3dMapping id="tcol2" 							node="0>1|5" />
+	  <i3dMapping id="tcol3" 							node="0>1|6" />
+	  <i3dMapping id="tcol4" 							node="0>1|7" />
+	  <i3dMapping id="electricSocket_ref" 				node="0>2" />
+	  <i3dMapping id="visual" 							node="0>3" />
+	  <i3dMapping id="body_vis" 						node="0>3|0" />
+	  <i3dMapping id="gestell_vis" 						node="0>3|1" />
+	  <i3dMapping id="trichter_vis" 					node="0>3|2" />
+	  <i3dMapping id="decals_vis" 						node="0>3|3" />
+	  <i3dMapping id="trichter2_vis" 					node="0>3|4" />
+	  <i3dMapping id="grid_vis" 						node="0>3|4|0" />
+	  <i3dMapping id="tarp" 							node="0>3|5" />
+	  <i3dMapping id="cameras" 							node="0>4" />
+	  <i3dMapping id="outdoorCameraTarget" 				node="0>4|0" />
+	  <i3dMapping id="outdoorCamera1" 					node="0>4|0|0" />
+	  <i3dMapping id="cameraRaycastNode1" 				node="0>4|1" />
+	  <i3dMapping id="cameraRaycastNode2"				node="0>4|2" />
+	  <i3dMapping id="cameraRaycastNode3" 				node="0>4|3" />
+	  <i3dMapping id="camera" 							node="0>5" />
+	  <i3dMapping id="fillUnit" 						node="0>6" />
+	  <i3dMapping id="exactFillRootNode" 				node="0>6|0" />
+	  <i3dMapping id="loadInfo" 						node="0>6|1" />
+	  <i3dMapping id="fillAutoAimTarget" 				node="0>6|2" />
+	  <i3dMapping id="effectGrainDoor" 					node="0>6|3" />
+	  <i3dMapping id="effectSmokeDoor" 					node="0>6|4" />
+	  <i3dMapping id="fillVolume" 						node="0>6|5" />
+	  <i3dMapping id="palletSpawn" 						node="0>6|6" />
+	  <i3dMapping id="marker" 							node="0>6|6|0" />
+	  <i3dMapping id="dischargeActivationTrigger" 		node="0>6|6|1" />
+	  <i3dMapping id="fakeAnim" 						node="0>6|7" />
+	  <i3dMapping id="dischargeNode" 					node="0>6|8" />
+	  <i3dMapping id="unloadInfo" 						node="0>6|9" />
+	  <i3dMapping id="baleTrigger" 						node="0>6|10" />
+	  <i3dMapping id="extraDistanceNode1" 				node="0>6|11" />
+	  <i3dMapping id="wheels" 							node="0>7" />
+	  <i3dMapping id="fakeWheel1" 						node="0>7|0" />
+	  <i3dMapping id="fakeWheel2" 						node="0>7|1" />
+	  <i3dMapping id="attacherJoints" 					node="0>8" />
+	  <i3dMapping id="lifter1_vis" 						node="0>8|0" />
+	  <i3dMapping id="compJoint" 						node="0>8|1" />
+	  <i3dMapping id="trailerAttacherJointBack" 		node="0>8|2" />
+	  <i3dMapping id="belt" 							node="0>9" />
+	  <i3dMapping id="beltChain_vis" 					node="0>9|0" />
+	  <i3dMapping id="beltDecals_vis" 					node="0>9|1" />
+	  <i3dMapping id="belt_vis" 						node="0>9|2" />
+	  <i3dMapping id="beltHolder_vis" 					node="0>9|3" />
+	  <i3dMapping id="pipeRaycastNode" 					node="0>9|4" />
+	  <i3dMapping id="effects" 							node="0>9|5" />
+	  <i3dMapping id="mesh" 							node="0>9|5|0" />
+	  <i3dMapping id="mesh_target" 						node="0>9|5|1" />
+	  <i3dMapping id="pipeEffect"						node="0>9|5|2" />
+	  <i3dMapping id="colBelt" 							node="0>9|6" />
+	  <i3dMapping id="extraDistanceNode2" 				node="0>9|7" />
+	  <i3dMapping id="tipOcclusionArea" 				node="0>10" />
+	  <i3dMapping id="start" 							node="0>10|0" />
+	  <i3dMapping id="width" 							node="0>10|1" />
+	  <i3dMapping id="height" 							node="0>10|2" />
+	  <i3dMapping id="exitPoint" 						node="0>11" />
+	  <i3dMapping id="moveTrigger" 						node="0>12" />
+	  <i3dMapping id="crusherCutNode" 					node="0>13" />
+	  <i3dMapping id="crusherCutNodeRef" 				node="0>13|0" />
+	  <i3dMapping id="crusherShapeSizeDetectionNode"	node="0>14" />
+	  <i3dMapping id="mainComponent1" 					node="1>" />
+	  <i3dMapping id="flAttacher1" 						node="1>0" />
+	  <i3dMapping id="flAttacher2" 						node="1>1" />
+	</i3dMappings>
+</vehicle>
